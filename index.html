@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Nguyễn Nhựt Linh — Bio</title>
+
+      <!-- Chống nháy màn hình khi tải lại trang theo theme đã lưu -->
+      <script>
+            (function () {
+                  const saved = localStorage.getItem("bio-theme");
+                  const preferDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+                  document.documentElement.setAttribute("data-theme", saved || (preferDark ? "dark" : "light"));
+            })();
+      </script>
+
+      <!-- Font tiếng Việt -->
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap"
+            rel="stylesheet" />
+
+      <!-- Bootstrap 5 & Bootstrap Icons -->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+
+      <style>
+            /* =========================================================
+       BẢNG MÀU LIGHT MODE (TONE XANH DƯƠNG)
+       ========================================================= */
+            :root,
+            [data-theme="light"] {
+                  --bg-page: #f0f6ff;
+                  --bg-gradient: radial-gradient(circle at top, #dbeafe 0%, #f0f6ff 48%, #f8fbff 100%);
+                  --bg-card: #ffffff;
+                  --bg-card-hover: #f5f9ff;
+                  --border-color: rgba(37, 99, 235, 0.14);
+                  --border-hover: rgba(37, 99, 235, 0.42);
+                  --shadow-card: 0 4px 16px rgba(30, 64, 175, 0.06);
+                  --shadow-hover: 0 8px 24px rgba(37, 99, 235, 0.12);
+
+                  --accent: #2563eb;
+                  --accent-strong: #1d4ed8;
+                  --accent-soft: rgba(37, 99, 235, 0.1);
+                  --accent-glow: rgba(37, 99, 235, 0.22);
+
+                  /* Màu riêng cho mục banner Cứu hộ / Thiện nguyện */
+                  --promo-bg: linear-gradient(135deg, #e0edff 0%, #ffffff 68%);
+                  --promo-bg-hover: linear-gradient(135deg, #d3e5ff 0%, #f8fbff 75%);
+                  --promo-border: rgba(37, 99, 235, 0.3);
+                  --promo-cta-bg: #2563eb;
+                  --promo-cta-text: #ffffff;
+                  --tag-rescue-bg: rgba(239, 68, 68, 0.12);
+                  --tag-rescue-text: #dc2626;
+                  --tag-charity-bg: rgba(16, 185, 129, 0.14);
+                  --tag-charity-text: #047857;
+
+                  --text-main: #0f172a;
+                  --text-muted: #475569;
+                  --badge-bg: #e0edff;
+                  --badge-text: #1e40af;
+                  --toast-bg: #1e3a8a;
+                  --toast-text: #ffffff;
+            }
+
+            /* =========================================================
+       BẢNG MÀU DARK MODE (TONE XANH DƯƠNG ĐẬM)
+       ========================================================= */
+            [data-theme="dark"] {
+                  --bg-page: #060d1f;
+                  --bg-gradient: radial-gradient(circle at top, #102a56 0%, #09152e 45%, #060d1f 100%);
+                  --bg-card: #0d1b36;
+                  --bg-card-hover: #13254a;
+                  --border-color: rgba(59, 130, 246, 0.2);
+                  --border-hover: rgba(96, 165, 250, 0.55);
+                  --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.28);
+                  --shadow-hover: 0 8px 24px rgba(37, 99, 235, 0.22);
+
+                  --accent: #3b82f6;
+                  --accent-strong: #60a5fa;
+                  --accent-soft: rgba(59, 130, 246, 0.16);
+                  --accent-glow: rgba(59, 130, 246, 0.32);
+
+                  /* Màu riêng cho mục banner Cứu hộ / Thiện nguyện */
+                  --promo-bg: linear-gradient(135deg, rgba(37, 99, 235, 0.24) 0%, #0d1b36 72%);
+                  --promo-bg-hover: linear-gradient(135deg, rgba(37, 99, 235, 0.34) 0%, #13254a 78%);
+                  --promo-border: rgba(96, 165, 250, 0.4);
+                  --promo-cta-bg: #3b82f6;
+                  --promo-cta-text: #ffffff;
+                  --tag-rescue-bg: rgba(248, 113, 113, 0.16);
+                  --tag-rescue-text: #fca5a5;
+                  --tag-charity-bg: rgba(52, 211, 153, 0.16);
+                  --tag-charity-text: #6ee7b7;
+
+                  --text-main: #f1f5f9;
+                  --text-muted: #94a3b8;
+                  --badge-bg: rgba(59, 130, 246, 0.16);
+                  --badge-text: #93c5fd;
+                  --toast-bg: #1d4ed8;
+                  --toast-text: #f8fafc;
+            }
+
+            body {
+                  font-family: "Be Vietnam Pro", sans-serif;
+                  background-color: var(--bg-page);
+                  background-image: var(--bg-gradient);
+                  background-attachment: fixed;
+                  color: var(--text-main);
+                  min-height: 100vh;
+                  transition: background-color 0.25s ease, color 0.25s ease;
+            }
+
+            .bio-wrapper {
+                  max-width: 560px;
+            }
+
+            .pill-chip {
+                  background-color: var(--bg-card);
+                  border: 1px solid var(--border-color);
+                  color: var(--text-muted);
+                  box-shadow: var(--shadow-card);
+                  transition: all 0.2s ease;
+            }
+
+            .theme-toggle {
+                  cursor: pointer;
+                  color: var(--text-main);
+            }
+
+            .theme-toggle:hover {
+                  border-color: var(--border-hover);
+                  color: var(--accent-strong);
+                  transform: translateY(-1px);
+            }
+
+            .avatar-box {
+                  width: 98px;
+                  height: 98px;
+                  object-fit: cover;
+                  border: 3px solid var(--accent);
+                  box-shadow: 0 0 0 5px var(--accent-soft), 0 8px 24px var(--accent-glow);
+            }
+
+            .role-badge {
+                  background-color: var(--badge-bg);
+                  color: var(--badge-text);
+                  font-size: 0.8rem;
+            }
+
+            .section-label {
+                  font-size: 0.78rem;
+                  letter-spacing: 0.08em;
+                  text-transform: uppercase;
+                  color: var(--accent-strong);
+            }
+
+            .text-muted-custom {
+                  color: var(--text-muted);
+            }
+
+            /* Thẻ dịch vụ & liên hệ */
+            .custom-card,
+            .contact-card {
+                  background-color: var(--bg-card);
+                  border: 1px solid var(--border-color);
+                  box-shadow: var(--shadow-card);
+                  transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+            }
+
+            .custom-card:hover,
+            .contact-card:hover {
+                  background-color: var(--bg-card-hover);
+                  border-color: var(--border-hover);
+                  box-shadow: var(--shadow-hover);
+                  transform: translateY(-2px);
+            }
+
+            .service-icon {
+                  width: 44px;
+                  height: 44px;
+                  background-color: var(--accent-soft);
+                  color: var(--accent-strong);
+                  flex-shrink: 0;
+            }
+
+            .copy-btn {
+                  color: var(--text-muted);
+                  transition: color 0.15s ease, background-color 0.15s ease;
+            }
+
+            .copy-btn:hover {
+                  color: var(--accent-strong);
+                  background-color: var(--accent-soft);
+            }
+
+            /* =========================================================
+       MỤC BANNER CỨU HỘ / THIỆN NGUYỆN (KIỂU QUẢNG CÁO)
+       ========================================================= */
+            .promo-pill-note {
+                  font-size: 0.7rem;
+                  padding: 2px 8px;
+                  border-radius: 999px;
+                  border: 1px dashed var(--promo-border);
+                  color: var(--text-muted);
+            }
+
+            .promo-card {
+                  background: var(--promo-bg);
+                  border: 1px solid var(--promo-border);
+                  box-shadow: var(--shadow-card);
+                  text-decoration: none;
+                  color: var(--text-main);
+                  position: relative;
+                  overflow: hidden;
+                  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+            }
+
+            .promo-card::before {
+                  content: "";
+                  position: absolute;
+                  left: 0;
+                  top: 0;
+                  bottom: 0;
+                  width: 4px;
+                  background-color: var(--accent);
+            }
+
+            .promo-card:hover {
+                  background: var(--promo-bg-hover);
+                  border-color: var(--border-hover);
+                  box-shadow: var(--shadow-hover);
+                  transform: translateY(-2px);
+                  color: var(--text-main);
+            }
+
+            .promo-thumb {
+                  width: 52px;
+                  height: 52px;
+                  flex-shrink: 0;
+                  object-fit: cover;
+                  background-color: var(--accent-soft);
+                  color: var(--accent-strong);
+                  border: 1px solid var(--border-color);
+            }
+
+            .promo-tag {
+                  font-size: 0.7rem;
+                  font-weight: 600;
+                  padding: 2px 8px;
+                  border-radius: 999px;
+                  display: inline-flex;
+                  align-items: center;
+                  gap: 4px;
+            }
+
+            .promo-tag.rescue {
+                  background-color: var(--tag-rescue-bg);
+                  color: var(--tag-rescue-text);
+            }
+
+            .promo-tag.charity {
+                  background-color: var(--tag-charity-bg);
+                  color: var(--tag-charity-text);
+            }
+
+            .promo-cta {
+                  background-color: var(--promo-cta-bg);
+                  color: var(--promo-cta-text);
+                  font-size: 0.78rem;
+                  font-weight: 600;
+                  white-space: nowrap;
+                  flex-shrink: 0;
+                  transition: opacity 0.2s ease;
+            }
+
+            .promo-card:hover .promo-cta {
+                  opacity: 0.92;
+            }
+
+            .footer-line {
+                  border-top: 1px solid var(--border-color);
+            }
+
+            .copy-toast {
+                  position: fixed;
+                  bottom: 24px;
+                  left: 50%;
+                  transform: translateX(-50%) translateY(20px);
+                  background-color: var(--toast-bg);
+                  color: var(--toast-text);
+                  opacity: 0;
+                  pointer-events: none;
+                  transition: all 0.25s ease;
+                  z-index: 1050;
+            }
+
+            .copy-toast.show {
+                  opacity: 1;
+                  transform: translateX(-50%) translateY(0);
+            }
+      </style>
+</head>
+
+<body>
+
+      <main class="container py-4 py-sm-5 bio-wrapper">
+            <!-- THANH TRÊN CÙNG -->
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                  <span class="pill-chip rounded-pill px-3 py-1 small d-inline-flex align-items-center gap-1">
+                        <i class="bi bi-geo-alt-fill" style="color: var(--accent);"></i>
+                        <span id="locationText"></span>
+                  </span>
+
+                  <button id="themeToggleBtn" type="button"
+                        class="pill-chip theme-toggle rounded-pill px-3 py-1 small d-inline-flex align-items-center gap-2"
+                        aria-label="Chuyển chế độ Sáng / Tối">
+                        <i id="themeIcon" class="bi"></i>
+                        <span id="themeLabel"></span>
+                  </button>
+            </div>
+
+            <!-- PHẦN 1: GIỚI THIỆU NGẮN -->
+            <header class="text-center mb-4">
+                  <img id="avatar" src="" alt="Avatar" class="rounded-circle avatar-box mb-3" />
+                  <h1 id="fullName" class="h4 fw-bold mb-2"></h1>
+                  <div class="mb-2">
+                        <span id="roleTag" class="role-badge rounded-pill px-3 py-1 fw-medium d-inline-block"></span>
+                  </div>
+                  <p id="shortBio" class="small text-muted-custom mb-0 px-2"></p>
+            </header>
+
+            <!-- PHẦN 2: DỊCH VỤ CUNG CẤP -->
+            <section class="mb-4">
+                  <div class="d-flex justify-content-between align-items-center mb-2 px-1">
+                        <h2 class="section-label fw-bold mb-0">Dịch vụ cung cấp</h2>
+                        <span class="small text-muted-custom" id="serviceCount"></span>
+                  </div>
+                  <div id="servicesList" class="d-flex flex-column gap-2"></div>
+            </section>
+
+            <!-- PHẦN 3: LIÊN HỆ -->
+            <section class="mb-4">
+                  <h2 class="section-label fw-bold mb-2 px-1">Liên hệ nhanh</h2>
+                  <div class="row g-2" id="contactList"></div>
+            </section>
+
+            <!-- PHẦN 4: GÓC LAN TỎA (CỨU HỘ & THIỆN NGUYỆN) -->
+            <section id="communitySection" class="mb-4">
+                  <div class="d-flex justify-content-between align-items-center mb-2 px-1">
+                        <h2 class="section-label fw-bold mb-0">
+                              <i class="bi bi-megaphone-fill me-1"></i>Góc lan tỏa
+                        </h2>
+                        <span class="promo-pill-note">Cứu hộ • Thiện nguyện</span>
+                  </div>
+                  <div id="communityList" class="d-flex flex-column gap-2"></div>
+            </section>
+
+            <!-- FOOTER -->
+            <footer class="text-center pt-3 footer-line">
+                  <small class="text-muted-custom">© <span id="year"></span> <span id="footerName"></span></small>
+            </footer>
+      </main>
+
+      <!-- Thông báo copy -->
+      <div id="copyToast" class="copy-toast rounded-pill px-3 py-2 small shadow">
+            <i class="bi bi-check-circle-fill me-1"></i>
+            <span id="toastText">Đã sao chép!</span>
+      </div>
+
+      <script>
+            // =========================================================
+            // 1. THÔNG TIN CÁ NHÂN & LINK LIÊN HỆ
+            // =========================================================
+            const PROFILE = {
+                  name: "Nguyễn Nhựt Linh",
+                  role: "Media • Event Tech • IT & Custom Gear",
+                  bio: "Chuyên chụp ảnh sự kiện/tiệc, vận hành âm thanh sân khấu, sửa chữa máy tính và custom bàn phím cơ theo yêu cầu.",
+                  location: "Phường Cái Răng, Cần Thơ",
+                  avatar: "https://github.com/LinhXiaolin.png",
+
+                  contacts: {
+                        facebook: "https://www.facebook.com/linhdeptraivippro",
+                        zalo: "https://zalo.me/0932858015",
+                        phone: "0932 858 015",
+                        tiktok: "https://www.tiktok.com/@xiaolin.2212"
+                  }
+            };
+
+            // =========================================================
+            // 2. DANH SÁCH DỊCH VỤ (Dễ dàng thêm/sửa về sau)
+            // =========================================================
+            const SERVICES = [
+                  {
+                        icon: "bi-camera-fill",
+                        title: "Chụp ảnh sự kiện & chụp ảnh tiệc",
+                        desc: "Hội nghị, khai trương, tiệc cưới, sinh nhật — giao ảnh nhanh, màu tự nhiên."
+                  },
+                  {
+                        icon: "bi-sliders",
+                        title: "Chạy âm thanh sự kiện",
+                        desc: "Setup, cân chỉnh mixer và vận hành âm thanh trực tiếp cho chương trình, sân khấu."
+                  },
+                  {
+                        icon: "bi-pc-display",
+                        title: "Sửa chữa phần cứng & phần mềm máy tính",
+                        desc: "Cài Windows, tối ưu hiệu năng, vệ sinh máy, nâng cấp linh kiện PC/Laptop."
+                  },
+                  {
+                        icon: "bi-keyboard-fill",
+                        title: "Custom & Order bàn phím cơ",
+                        desc: "Tư vấn build, lube switch, mod stab/foam và nhận order kit/phụ kiện bàn phím cơ."
+                  }
+            ];
+
+            // =========================================================
+            // 3. DANH SÁCH PAGE CỨU HỘ / THIỆN NGUYỆN (BANNER LAN TỎA)
+            // - type: "rescue" (nhãn đỏ Cứu hộ) hoặc "charity" (nhãn xanh Thiện nguyện)
+            // - image: để "" sẽ hiện icon; điền "./ten-anh.jpg" hoặc link ảnh để hiện logo page
+            // =========================================================
+            const COMMUNITY_PAGES = [
+                  {
+                        type: "rescue",
+                        tag: "Cứu hộ",
+                        name: "Đội Cứu Nạn Giao Thông TP. Cần Thơ",
+                        desc: `Đây là nhóm thiện nguyện<br>
+                              không phải CƠ QUAN CHỨC NĂNG<br>
+                              0866414668 Cứu hộ xe máy hư dọc đường<br>
+                              Zalo 0822299965 (20:00 - 03:00)<br>
+                              Cấp cứu chở TNGT 24/24`,
+                        url: "https://www.facebook.com/SOSCNGTTPCT",
+                        cta: "Xem page",
+                        icon: "bi-shield-plus",
+                        image: ""
+                  },
+                  {
+                        type: "rescue",
+                        tag: "Cứu hộ",
+                        name: "Đội Cứu Hộ Giao Thông TP. Cần Thơ tuyến Quốc lộ 1A Hậu Giang",
+                        desc: `ĐỘI CỨU NẠN SỬA XE MIỄN PHÍ - HG<br>
+                              HOTLINE ĐỘI: 0394 129 057`,
+                        url: "https://www.facebook.com/profile.php?id=61585656085126",
+                        cta: "Xem page",
+                        icon: "bi-shield-plus",
+                        image: ""
+                  },
+
+                  {
+                        type: "charity",
+                        tag: "Thiện nguyện",
+                        name: "CLB / Nhóm Thiện Nguyện (Điền tên page)",
+                        desc: "Kết nối yêu thương, đồng hành cùng các chương trình cộng đồng và hoàn cảnh khó khăn.",
+                        url: "https://facebook.com/page-thien-nguyen",
+                        cta: "Ghé page",
+                        icon: "bi-heart-fill",
+                        image: ""
+                  }
+                  // --- THÊM PAGE MỚI CHỈ CẦN COPY THÊM 1 KHỐI TƯƠNG TỰ TẠI ĐÂY ---
+            ];
+
+            // =========================================================
+            // 4. XỬ LÝ LIGHT MODE / DARK MODE
+            // =========================================================
+            const themeBtn = document.getElementById("themeToggleBtn");
+            const themeIcon = document.getElementById("themeIcon");
+            const themeLabel = document.getElementById("themeLabel");
+
+            function updateThemeUI(theme) {
+                  document.documentElement.setAttribute("data-theme", theme);
+                  if (theme === "dark") {
+                        themeIcon.className = "bi bi-sun-fill text-warning";
+                        themeIcon.style.color = "";
+                        themeLabel.textContent = "Sáng";
+                  } else {
+                        themeIcon.className = "bi bi-moon-stars-fill";
+                        themeIcon.style.color = "var(--accent)";
+                        themeLabel.textContent = "Tối";
+                  }
+            }
+
+            updateThemeUI(document.documentElement.getAttribute("data-theme") || "light");
+
+            themeBtn.addEventListener("click", () => {
+                  const current = document.documentElement.getAttribute("data-theme");
+                  const next = current === "dark" ? "light" : "dark";
+                  localStorage.setItem("bio-theme", next);
+                  updateThemeUI(next);
+            });
+
+            // =========================================================
+            // 5. RENDER DỮ LIỆU TỰ ĐỘNG
+            // =========================================================
+            document.getElementById("avatar").src = PROFILE.avatar;
+            document.getElementById("fullName").textContent = PROFILE.name;
+            document.getElementById("footerName").textContent = PROFILE.name;
+            document.getElementById("roleTag").textContent = PROFILE.role;
+            document.getElementById("shortBio").textContent = PROFILE.bio;
+            document.getElementById("locationText").textContent = PROFILE.location;
+            document.getElementById("year").textContent = new Date().getFullYear();
+
+            // Render dịch vụ
+            const servicesEl = document.getElementById("servicesList");
+            document.getElementById("serviceCount").textContent = `${SERVICES.length} hạng mục`;
+
+            SERVICES.forEach((item) => {
+                  servicesEl.innerHTML += `
+        <div class="custom-card rounded-4 p-3 d-flex align-items-start gap-3">
+          <div class="service-icon rounded-3 d-flex align-items-center justify-content-center fs-5">
+            <i class="bi ${item.icon}"></i>
+          </div>
+          <div>
+            <h3 class="h6 fw-semibold mb-1">${item.title}</h3>
+            <p class="small text-muted-custom mb-0">${item.desc}</p>
+          </div>
+        </div>
+      `;
+            });
+
+            // Render liên hệ
+            const cleanPhone = PROFILE.contacts.phone.replace(/\s+/g, "");
+            const contactItems = [
+                  {
+                        label: "Facebook",
+                        sub: "Nhắn tin trực tiếp",
+                        icon: "bi-facebook",
+                        color: "#1877f2",
+                        href: PROFILE.contacts.facebook,
+                        external: true
+                  },
+                  {
+                        label: "Zalo",
+                        sub: "Tư vấn & báo giá",
+                        icon: "bi-chat-dots-fill",
+                        color: "#0068ff",
+                        href: PROFILE.contacts.zalo,
+                        external: true
+                  },
+                  {
+                        label: "Điện thoại",
+                        sub: PROFILE.contacts.phone,
+                        icon: "bi-telephone-fill",
+                        color: "#16a34a",
+                        href: `tel:${cleanPhone}`,
+                        copyValue: cleanPhone
+                  },
+                  {
+                        label: "TikTok",
+                        sub: "@xiaolin.2212",
+                        icon: "bi-tiktok",
+                        color: "var(--text-main)",
+                        href: PROFILE.contacts.tiktok,
+                        external: true
+                  }
+            ];
+
+            const contactEl = document.getElementById("contactList");
+            contactItems.forEach((c) => {
+                  const targetAttr = c.external ? `target="_blank" rel="noopener noreferrer"` : "";
+                  const copyBtn = c.copyValue
+                        ? `<button type="button" class="btn btn-sm copy-btn rounded-3 p-1 px-2 ms-auto border-0" title="Sao chép" onclick="copyText(event, '${c.copyValue}', '${c.label}')">
+             <i class="bi bi-clipboard"></i>
+           </button>`
+                        : "";
+
+                  contactEl.innerHTML += `
+        <div class="col-12 col-sm-6">
+          <div class="contact-card rounded-4 p-3 d-flex align-items-center gap-2 h-100">
+            <a href="${c.href}" ${targetAttr} class="d-flex align-items-center gap-3 text-decoration-none text-reset flex-grow-1 overflow-hidden">
+              <i class="bi ${c.icon} fs-4" style="color: ${c.color};"></i>
+              <div class="text-truncate">
+                <div class="fw-semibold small">${c.label}</div>
+                <div class="text-muted-custom text-truncate" style="font-size: 0.78rem;">${c.sub}</div>
+              </div>
+            </a>
+            ${copyBtn}
+          </div>
+        </div>
+      `;
+            });
+
+            // Render mục banner Cứu hộ / Thiện nguyện
+            const communitySection = document.getElementById("communitySection");
+            const communityEl = document.getElementById("communityList");
+
+            if (!COMMUNITY_PAGES.length) {
+                  communitySection.style.display = "none";
+            } else {
+                  COMMUNITY_PAGES.forEach((p) => {
+                        const tagClass = p.type === "rescue" ? "rescue" : "charity";
+                        const thumbHtml = p.image
+                              ? `<img src="${p.image}" alt="${p.name}" class="promo-thumb rounded-3" />`
+                              : `<div class="promo-thumb rounded-3 d-flex align-items-center justify-content-center fs-4">
+               <i class="bi ${p.icon || "bi-heart-fill"}"></i>
+             </div>`;
+
+                        communityEl.innerHTML += `
+          <a href="${p.url}" target="_blank" rel="noopener noreferrer" class="promo-card rounded-4 p-3 ps-4 d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-3">
+            <div class="d-flex align-items-start gap-3 flex-grow-1">
+              ${thumbHtml}
+              <div>
+                <span class="promo-tag ${tagClass} mb-1">${p.tag}</span>
+                <h3 class="h6 fw-bold mb-1">${p.name}</h3>
+                <p class="small text-muted-custom mb-0">${p.desc}</p>
+              </div>
+            </div>
+            <span class="promo-cta rounded-pill px-3 py-2 align-self-end align-self-sm-center">
+              ${p.cta || "Xem page"} <i class="bi bi-arrow-up-right ms-1"></i>
+            </span>
+          </a>
+        `;
+                  });
+            }
+
+            // Copy nhanh SĐT / Email
+            let toastTimer;
+            function copyText(e, value, label) {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  navigator.clipboard.writeText(value).then(() => {
+                        const toast = document.getElementById("copyToast");
+                        document.getElementById("toastText").textContent = `Đã sao chép ${label}: ${value}`;
+                        toast.classList.add("show");
+                        clearTimeout(toastTimer);
+                        toastTimer = setTimeout(() => toast.classList.remove("show"), 2200);
+                  });
+            }
+      </script>
+      <script>
+            // Chặn menu chuột phải
+            document.addEventListener("contextmenu", (e) => e.preventDefault());
+
+            // Chặn các tổ hợp phím F12, Ctrl+Shift+I/J/C, Ctrl+U, Ctrl+S
+            document.addEventListener("keydown", (e) => {
+                  const key = e.key.toLowerCase();
+                  const isCtrlOrCmd = e.ctrlKey || e.metaKey;
+
+                  if (
+                        e.key === "F12" ||
+                        (isCtrlOrCmd && e.shiftKey && ["i", "j", "c"].includes(key)) ||
+                        (isCtrlOrCmd && ["u", "s"].includes(key))
+                  ) {
+                        e.preventDefault();
+                  }
+            });
+      </script>
+</body>
+
+</html>
